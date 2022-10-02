@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package payment;
+
+service Payment {
+  rpc GetUrl(PaymentRequest) returns (PaymentResponse) {}
+  rpc GetStatus(StatusRequest) returns (stream StatusResponse) {};
+}
+
+message PaymentResponse {
+  string url = 1;
+  string id = 2;
+}
+
+message PaymentRequest {
+  string project_id = 1;
+  string user_id = 2;
+  string email = 4;
+  string name = 5;
+  double amount = 6;
+  string description = 3;
+}
+
+enum PaymentStatus {
+  PENDING = 0;
+  SUCCESS = 1;
+  FAIL = 2;
+  EXPIRED = 3;
+}
+
+message StatusResponse { PaymentStatus status = 1; }
+
+message StatusRequest { string id = 1; }

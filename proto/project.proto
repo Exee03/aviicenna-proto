@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package project;
+
+service Project {
+  rpc GetProject(ProjectRequest) returns (ProjectResponse) {}
+  rpc GetPaymentConfig(PaymentConfigRequest) returns (PaymentConfigResponse) {}
+  rpc GetPaymentConfigByProject(PaymentConfigRequest)
+      returns (PaymentConfigResponse) {}
+}
+
+message ProjectResponse {
+  string id = 1;
+  string name = 2;
+  string create_at = 3;
+  PaymentConfigResponse payment = 4;
+}
+
+message PaymentConfigResponse {
+  string collection = 1;
+  string token = 2;
+  string create_bill_endpoint = 3;
+  string pay_bill_endpoint = 4;
+  string transaction_endpoint = 5;
+}
+
+message ProjectRequest { string id = 1; }
+
+message PaymentConfigRequest { string id = 1; }
