@@ -3,22 +3,56 @@ syntax = "proto3";
 package project;
 
 service Project {
-  rpc GetProject(ProjectRequest) returns (ProjectResponse) {}
-  rpc GetPaymentConfig(PaymentConfigRequest) returns (PaymentConfigResponse) {}
-  rpc GetPaymentConfigByProject(PaymentConfigRequest)
-      returns (PaymentConfigResponse) {}
-  rpc GetAppleSignInConfigByProject(AppleSignInConfigRequest)
-      returns (AppleSignInConfigResponse) {}
+  rpc GetProject(GetProjectRequest) returns (GetProjectResponse) {}
+  rpc GetPaymentConfigByProject(GetPaymentConfigRequest)
+      returns (GetPaymentConfigResponse) {}
+  rpc GetAppleSignInConfigByProject(GetAppleSignInConfigRequest)
+      returns (GetAppleSignInConfigResponse) {}
+
+  rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse) {}
+  rpc CreatePaymentConfigByProject(CreatePaymentConfigRequest)
+      returns (CreatePaymentConfigResponse) {}
+  rpc CreateAppleSignInConfigByProject(CreateAppleSignInConfigRequest)
+      returns (CreateAppleSignInConfigResponse) {}
 }
 
-message ProjectResponse {
+// Reqeust
+
+message GetProjectRequest { string id = 1; }
+
+message GetPaymentConfigRequest { string id = 1; }
+
+message GetAppleSignInConfigRequest { string id = 1; }
+
+message CreateProjectRequest { string name = 1; }
+
+message CreatePaymentConfigRequest {
+  string project_id = 1;
+  string collection = 2;
+  string token = 3;
+  string create_bill_endpoint = 4;
+  string pay_bill_endpoint = 5;
+  string transaction_endpoint = 6;
+}
+
+message CreateAppleSignInConfigRequest {
+  string project_id = 1;
+  string client_id = 2;
+  string team_id = 3;
+  string key_id = 4;
+  string private_key = 5;
+}
+
+// Response
+
+message GetProjectResponse {
   string id = 1;
   string name = 2;
   string create_at = 3;
-  PaymentConfigResponse payment = 4;
+  GetPaymentConfigResponse payment = 4;
 }
 
-message PaymentConfigResponse {
+message GetPaymentConfigResponse {
   string collection = 1;
   string token = 2;
   string create_bill_endpoint = 3;
@@ -26,15 +60,15 @@ message PaymentConfigResponse {
   string transaction_endpoint = 5;
 }
 
-message AppleSignInConfigResponse {
-  string client_id = 2;
-  string team_id = 3;
-  string key_id = 4;
-  string private_key = 5;
+message GetAppleSignInConfigResponse {
+  string client_id = 1;
+  string team_id = 2;
+  string key_id = 3;
+  string private_key = 4;
 }
 
-message ProjectRequest { string id = 1; }
+message CreateProjectResponse { string id = 1; }
 
-message PaymentConfigRequest { string id = 1; }
+message CreatePaymentConfigResponse { string id = 1; }
 
-message AppleSignInConfigRequest { string id = 1; }
+message CreateAppleSignInConfigResponse { string id = 1; }
