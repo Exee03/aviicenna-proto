@@ -17,6 +17,5 @@ message RevokeResponse { Status status = 1; }
 
 message RevokeRequest {
   string project_id = 1;
-  string refresh_token = 2;
-  string access_token = 3;
+  string code = 2;
 }
