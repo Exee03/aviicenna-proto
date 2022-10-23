@@ -16,6 +16,7 @@ enum Status {
 message RevokeResponse { Status status = 1; }
 
 message RevokeRequest {
-  string refresh_token = 1;
-  string access_token = 2;
+  string project_id = 1;
+  string refresh_token = 2;
+  string access_token = 3;
 }
