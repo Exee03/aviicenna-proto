@@ -29,6 +29,7 @@ message CreateBillRequest {
 message CreateBillResponse {
   string id = 1;
   string expired_at = 2;
+  string url = 3;
 }
 
 message GetStatusRequest {
