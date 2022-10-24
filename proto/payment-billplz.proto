@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package payment_billplz;
+
+service PaymentBillplz {
+  rpc CreateBill(CreateBillRequest) returns (CreateBillResponse) {}
+  rpc GetStatus(GetStatusRequest) returns (GetStatusResponse) {}
+}
+
+enum PaymentBillplzStatus {
+  PENDING = 0;
+  SUCCESS = 1;
+  FAIL = 2;
+  EXPIRED = 3;
+}
+
+message CreateBillRequest {
+  string id = 1;
+  string token = 2;
+  string collection = 3;
+  string description = 4;
+  string email = 5;
+  string name = 6;
+  string amount = 7;
+  string callback_url = 8;
+  string redirect_url = 9;
+}
+
+message CreateBillResponse {
+  string id = 1;
+  string expired_at = 2;
+}
+
+message GetStatusRequest {
+  string id = 1;
+  string token = 2;
+}
+
+message GetStatusResponse { PaymentBillplzStatus status = 1; }

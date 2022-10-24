@@ -6,16 +6,15 @@ service AppleSignIn {
   rpc RevokeToken(RevokeRequest) returns (RevokeResponse) {}
 }
 
-enum Status {
+enum AppleSignInStatus {
   PENDING = 0;
   SUCCESS = 1;
   FAIL = 2;
   EXPIRED = 3;
 }
 
-message RevokeResponse { Status status = 1; }
-
 message RevokeRequest {
   string project_id = 1;
   string code = 2;
 }
+message RevokeResponse { AppleSignInStatus status = 1; }

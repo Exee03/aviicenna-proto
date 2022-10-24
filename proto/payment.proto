@@ -3,22 +3,8 @@ syntax = "proto3";
 package payment;
 
 service Payment {
-  rpc GetUrl(PaymentRequest) returns (PaymentResponse) {}
-  rpc GetStatus(StatusRequest) returns (stream StatusResponse) {};
-}
-
-message PaymentResponse {
-  string url = 1;
-  string id = 2;
-}
-
-message PaymentRequest {
-  string project_id = 1;
-  string user_id = 2;
-  string email = 4;
-  string name = 5;
-  double amount = 6;
-  string description = 3;
+  rpc GetUrl(GetUrlRequest) returns (GetUrlResponse) {}
+  rpc GetStatus(GetStatusRequest) returns (stream GetStatusResponse) {}
 }
 
 enum PaymentStatus {
@@ -28,6 +14,18 @@ enum PaymentStatus {
   EXPIRED = 3;
 }
 
-message StatusResponse { PaymentStatus status = 1; }
+message GetUrlRequest {
+  string project_id = 1;
+  string user_id = 2;
+  string email = 4;
+  string name = 5;
+  double amount = 6;
+  string description = 3;
+}
+message GetUrlResponse {
+  string url = 1;
+  string id = 2;
+}
 
-message StatusRequest { string id = 1; }
+message GetStatusRequest { string id = 1; }
+message GetStatusResponse { PaymentStatus status = 1; }

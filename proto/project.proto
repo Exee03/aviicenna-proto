@@ -16,24 +16,37 @@ service Project {
       returns (CreateAppleSignInConfigResponse) {}
 }
 
-// Reqeust
-
 message GetProjectRequest { string id = 1; }
+message GetProjectResponse {
+  string id = 1;
+  string name = 2;
+  string create_at = 3;
+  GetPaymentConfigResponse payment = 4;
+}
 
 message GetPaymentConfigRequest { string id = 1; }
+message GetPaymentConfigResponse {
+  string collection = 1;
+  string token = 2;
+}
 
 message GetAppleSignInConfigRequest { string id = 1; }
+message GetAppleSignInConfigResponse {
+  string client_id = 1;
+  string team_id = 2;
+  string key_id = 3;
+  string private_key = 4;
+}
 
 message CreateProjectRequest { string name = 1; }
+message CreateProjectResponse { string id = 1; }
 
 message CreatePaymentConfigRequest {
   string project_id = 1;
   string collection = 2;
   string token = 3;
-  string create_bill_endpoint = 4;
-  string pay_bill_endpoint = 5;
-  string transaction_endpoint = 6;
 }
+message CreatePaymentConfigResponse { string id = 1; }
 
 message CreateAppleSignInConfigRequest {
   string project_id = 1;
@@ -42,33 +55,4 @@ message CreateAppleSignInConfigRequest {
   string key_id = 4;
   string private_key = 5;
 }
-
-// Response
-
-message GetProjectResponse {
-  string id = 1;
-  string name = 2;
-  string create_at = 3;
-  GetPaymentConfigResponse payment = 4;
-}
-
-message GetPaymentConfigResponse {
-  string collection = 1;
-  string token = 2;
-  string create_bill_endpoint = 3;
-  string pay_bill_endpoint = 4;
-  string transaction_endpoint = 5;
-}
-
-message GetAppleSignInConfigResponse {
-  string client_id = 1;
-  string team_id = 2;
-  string key_id = 3;
-  string private_key = 4;
-}
-
-message CreateProjectResponse { string id = 1; }
-
-message CreatePaymentConfigResponse { string id = 1; }
-
 message CreateAppleSignInConfigResponse { string id = 1; }
