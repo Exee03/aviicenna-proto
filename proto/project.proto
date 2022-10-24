@@ -26,8 +26,9 @@ message GetProjectResponse {
 
 message GetPaymentConfigRequest { string id = 1; }
 message GetPaymentConfigResponse {
-  string collection = 1;
+  int32 provider = 1;
   string token = 2;
+  string collection = 3;
 }
 
 message GetAppleSignInConfigRequest { string id = 1; }
