@@ -20,7 +20,7 @@ message CreateBillRequest {
   string description = 3;
   string email = 4;
   string name = 5;
-  string amount = 6;
+  int32 amount = 6;
   string callback_url = 7;
   string redirect_url = 8;
 }
