@@ -10,9 +10,9 @@ service Project {
       returns (GetAppleSignInConfigResponse) {}
 
   rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse) {}
-  rpc CreatePaymentConfigByProject(CreatePaymentConfigRequest)
+  rpc CreatePaymentConfig(CreatePaymentConfigRequest)
       returns (CreatePaymentConfigResponse) {}
-  rpc CreateAppleSignInConfigByProject(CreateAppleSignInConfigRequest)
+  rpc CreateAppleSignInConfig(CreateAppleSignInConfigRequest)
       returns (CreateAppleSignInConfigResponse) {}
 }
 
