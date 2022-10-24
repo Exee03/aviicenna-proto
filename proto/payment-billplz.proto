@@ -15,15 +15,14 @@ enum PaymentBillplzStatus {
 }
 
 message CreateBillRequest {
-  string id = 1;
-  string token = 2;
-  string collection = 3;
-  string description = 4;
-  string email = 5;
-  string name = 6;
-  string amount = 7;
-  string callback_url = 8;
-  string redirect_url = 9;
+  string token = 1;
+  string collection = 2;
+  string description = 3;
+  string email = 4;
+  string name = 5;
+  string amount = 6;
+  string callback_url = 7;
+  string redirect_url = 8;
 }
 
 message CreateBillResponse {
