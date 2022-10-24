@@ -44,8 +44,9 @@ message CreateProjectResponse { string id = 1; }
 
 message CreatePaymentConfigRequest {
   string project_id = 1;
-  string collection = 2;
+  int32 provider = 2;
   string token = 3;
+  string collection = 4;
 }
 message CreatePaymentConfigResponse { string id = 1; }
 
